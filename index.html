@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Makes the page fit nicely on phones and tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Bliss</title>
+
+  <!-- Link our CSS file for colors, layout, and animations -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Soft, friendly fonts (not the default system font) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@500;700;800&family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- This empty box will hold falling white cherry blossom petals from script.js -->
+  <div id="float-layer" aria-hidden="true"></div>
+
+  <!-- ========== SCREEN 1: Welcome (kept as-is) ========== -->
+  <main class="screen welcome is-active" id="welcome-screen">
+    <!-- Site name — the brand of this birthday page -->
+    <p class="brand">Birthday Bliss</p>
+
+    <!-- Main heading -->
+    <h1 class="headline">
+      I Know It's Early.. But I Couldn't Wait 🥹🎀
+    </h1>
+
+    <!-- Short supporting line under the heading -->
+    <p class="subtitle">
+      Because some wishes are too special to wait for October💌✨
+    </p>
+
+    <!-- Clicking this opens the birthday reveal screen -->
+    <button type="button" class="surprise-btn" id="surprise-btn">
+      Open your surprise🎁
+    </button>
+  </main>
+
+  <!-- ========== SCREEN 2: Birthday reveal ========== -->
+  <section class="screen reveal" id="reveal-screen" aria-hidden="true">
+    <p class="brand reveal-brand">Birthday Bliss</p>
+
+    <!-- Large birthday heading with a soft fade-in -->
+    <h1 class="birthday-heading" id="birthday-heading">
+      HAPPY BIRTHDAY CHICKEN MUTTON
+    </h1>
+
+    <!-- Short line under the birthday heading -->
+    <p class="reveal-subtitle">
+      Your special day is almost here.. but i couldn't wait to celebrate you
+    </p>
+
+    <!-- Opens page 3 with the message card -->
+    <button type="button" class="surprise-btn continue-btn" id="continue-btn">
+      Continue
+    </button>
+  </section>
+
+  <!-- ========== SCREEN 3: Message card ========== -->
+  <section class="screen message" id="message-screen" aria-hidden="true">
+    <!-- Cute elegant card — edit the paragraph below anytime -->
+    <article class="message-card" id="message-card">
+      <h2 class="card-heading">Something i want you to know</h2>
+
+      <!-- Placeholder birthday message — replace this text with your own later -->
+      <p class="card-message">
+        You make ordinary days feel a little brighter. Thank you for being you —
+        kind, funny, and so easy to celebrate. I hope this year brings you soft
+        moments, big smiles, and everything your heart has been waiting for.
+        Happy almost-birthday. I am so glad you exist.
+      </p>
+    </article>
+
+    <!-- Opens page 4 — Our Little Memories -->
+    <button type="button" class="surprise-btn message-continue-btn" id="memories-btn">
+      Continue
+    </button>
+  </section>
+
+  <!-- ========== SCREEN 4: Memory slideshow ========== -->
+  <section class="screen memories" id="memories-screen" aria-hidden="true">
+    <!-- Everything stacks: title → frame → Next Memory -->
+    <div class="memory-stage" id="memory-stage">
+      <!-- Frame + title + next button (title/button hug the purple edges) -->
+      <div class="polaroid-wrap" id="polaroid-wrap">
+        <!-- Very close to the top edge of the purple frame -->
+        <h2 class="memories-heading" id="memories-heading">Our Little Memories</h2>
+
+        <div class="polaroid-window" id="memory-photo-wrap">
+          <img
+            class="memory-photo"
+            id="memory-photo"
+            src=""
+            alt="A little memory"
+          />
+
+          <button type="button" class="in-frame-upload" id="upload-photo-btn">
+            Add a picture
+          </button>
+        </div>
+
+        <img
+          class="polaroid-overlay"
+          src="images/polaroid-frame.png"
+          alt=""
+          aria-hidden="true"
+        />
+
+        <!-- Extra white & purple bows around the frame -->
+        <div class="frame-bows" aria-hidden="true">
+          <svg class="bow bow-purple bow-1" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#7a5aad"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#9b7ec4"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#b59ad9"/>
+            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
+          </svg>
+          <svg class="bow bow-white bow-2" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#e8dff5"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f4eefb"/>
+            <circle cx="32" cy="20" r="5" fill="#d4c4f0"/>
+          </svg>
+          <svg class="bow bow-purple bow-3" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#8b6fc0"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#c4a8e8"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#a888d4"/>
+            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
+          </svg>
+          <svg class="bow bow-white bow-4" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#ddd0f0"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#faf7ff"/>
+            <circle cx="32" cy="20" r="5" fill="#c9b6e8"/>
+          </svg>
+          <svg class="bow bow-purple bow-5" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#7a5aad"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#d4c4f0"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#b8a0e0"/>
+            <circle cx="32" cy="20" r="5" fill="#5c3d8f"/>
+          </svg>
+          <svg class="bow bow-white bow-6" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#e6d9f8"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f0eaf8"/>
+            <circle cx="32" cy="20" r="5" fill="#c9b6e8"/>
+          </svg>
+          <svg class="bow bow-purple bow-7" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#8b6fc0"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#c9b6e8"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#a582c0"/>
+            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
+          </svg>
+          <svg class="bow bow-white bow-8" viewBox="0 0 64 48" fill="none">
+            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#ebe4f5"/>
+            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
+            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f7f2fc"/>
+            <circle cx="32" cy="20" r="5" fill="#d4c4f0"/>
+          </svg>
+        </div>
+
+        <!-- Very close to the bottom edge of the purple frame -->
+        <button type="button" class="surprise-btn" id="next-memory-btn">
+          Next Memory →
+        </button>
+      </div>
+
+      <!-- Hidden file picker — opened by the button inside the frame -->
+      <input
+        type="file"
+        id="photo-upload"
+        accept="image/*"
+        hidden
+      />
+
+      <!-- Create a shareable link with your framed photos -->
+      <div class="share-box" id="share-box">
+        <button type="button" class="share-btn" id="create-link-btn">
+          Create link
+        </button>
+        <p class="share-hint">
+          Add all 4 pictures, then create a link to send
+        </p>
+        <p class="share-status" id="share-status"></p>
+      </div>
+
+      <!-- Shown after Photo 4 — edit this message anytime -->
+      <div class="memory-finale" id="memory-finale" hidden>
+        <p class="finale-text">
+          Every little moment with you feels like a keepsake.
+          Thank you for filling my days with memories worth framing.
+        </p>
+        <!-- Opens page 5 — Make a wish -->
+        <button type="button" class="surprise-btn wish-continue-btn" id="wish-page-btn">
+          Continue
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCREEN 5: Make a wish ========== -->
+  <section class="screen wish" id="wish-screen" aria-hidden="true">
+    <!-- Sparkle confetti layer (filled by script.js) -->
+    <div id="wish-confetti" aria-hidden="true"></div>
+
+    <h2 class="wish-heading">Make a wish</h2>
+    <p class="wish-subtitle">
+      Close your eyes make a wish and let the magic begin✨
+    </p>
+
+    <!-- Cute CSS birthday cake with candles -->
+    <div class="cake-scene" id="cake-scene">
+      <div class="cake">
+        <!-- Three glowing candles -->
+        <div class="candle candle-left">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="candle-body"></div>
+        </div>
+        <div class="candle candle-mid">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="candle-body"></div>
+        </div>
+        <div class="candle candle-right">
+          <div class="flame"></div>
+          <div class="wick"></div>
+          <div class="candle-body"></div>
+        </div>
+
+        <!-- Cake layers -->
+        <div class="frosting frosting-top"></div>
+        <div class="layer layer-top"></div>
+        <div class="frosting frosting-mid"></div>
+        <div class="layer layer-bottom"></div>
+        <div class="cake-plate"></div>
+      </div>
+    </div>
+
+    <button type="button" class="surprise-btn" id="make-wish-btn">
+      Make my wish
+    </button>
+
+    <!-- Shown after the candles blow out -->
+    <p class="wish-sent" id="wish-sent" hidden>
+      Your wish has been sent to the star
+    </p>
+  </section>
+
+  <!-- Link our JavaScript file (at the bottom so HTML loads first) -->
+  <script src="script.js"></script>
+</body>
+</html>
