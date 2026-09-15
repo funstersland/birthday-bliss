@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@500;700;800&family=Pacifico&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500;1,6..96,600&family=Caveat:wght@500;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Nunito:wght@500;700;800&family=Pacifico&display=swap"
     rel="stylesheet"
   />
 </head>
@@ -21,40 +21,252 @@
   <!-- This empty box will hold falling white cherry blossom petals from script.js -->
   <div id="float-layer" aria-hidden="true"></div>
 
-  <!-- ========== SCREEN 1: Welcome (kept as-is) ========== -->
+  <!-- ========== SCREEN 1: Welcome ========== -->
   <main class="screen welcome is-active" id="welcome-screen">
-    <!-- Site name — the brand of this birthday page -->
-    <p class="brand">Birthday Bliss</p>
+    <span class="page-sticker cosmos-tr" aria-hidden="true"></span>
+    <span class="page-sticker fly-tl" aria-hidden="true">🦋</span>
+    <span class="page-sticker daisy-bl" aria-hidden="true"></span>
 
-    <!-- Main heading -->
-    <h1 class="headline">
-      I Know It's Early.. But I Couldn't Wait 🥹🎀
-    </h1>
+    <!-- Brand stays in Great Vibes — unchanged -->
+    <p class="brand paper-banner" data-edit-key="brand">Birthday Bliss</p>
 
-    <!-- Short supporting line under the heading -->
-    <p class="subtitle">
-      Because some wishes are too special to wait for October💌✨
-    </p>
+    <!-- Secret Garden–style note (page 1 only) — original vine panel -->
+    <div class="welcome-garden">
+      <svg class="garden-art" viewBox="0 0 340 420" aria-hidden="true">
+        <defs>
+          <linearGradient id="vineStroke" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8a9774" />
+            <stop offset="100%" stop-color="#5a6648" />
+          </linearGradient>
+        </defs>
 
-    <!-- Clicking this opens the birthday reveal screen -->
+        <!-- One clear oval frame — open center for the message -->
+        <g fill="none" stroke="url(#vineStroke)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path id="garden-oval" d="M170 54
+                   C102 54 48 116 48 200
+                   C48 284 102 352 170 352
+                   C238 352 292 284 292 200
+                   C292 116 238 54 170 54 Z" />
+          <path d="M170 68
+                   C112 68 64 124 64 200
+                   C64 276 112 338 170 338
+                   C228 338 276 276 276 200
+                   C276 124 228 68 170 68 Z" opacity="0.38" />
+        </g>
+
+        <!-- Heart lock attached to the top of the oval -->
+        <g fill="none" stroke="#657255" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M170 72
+                   C148 52 130 34 138 20
+                   C142 10 154 12 170 32
+                   C186 12 198 10 202 20
+                   C210 34 192 52 170 72 Z" />
+          <path d="M170 12 C168 2 176 -2 184 4 C188 8 184 16 178 20" />
+          <path d="M142 28 C128 16 116 28 124 44 C128 52 140 56 148 50" />
+          <path d="M198 28 C212 16 224 28 216 44 C212 52 200 56 192 50" />
+        </g>
+        <ellipse cx="170" cy="40" rx="6.5" ry="9" fill="#556246" />
+        <path d="M170 34.5 V47.5 M165.8 40.5 H174.2" fill="none" stroke="#f7f1e6" stroke-width="1.25" stroke-linecap="round" />
+
+        <!-- Small rim curls that start ON the oval -->
+        <g fill="none" stroke="#657255" stroke-width="1.35" stroke-linecap="round">
+          <path d="M78 120 C66 128 60 144 66 158" />
+          <path d="M262 120 C274 128 280 144 274 158" />
+          <path d="M70 250 C58 262 58 282 70 294" />
+          <path d="M270 250 C282 262 282 282 270 294" />
+          <path d="M118 344 C136 358 152 364 170 364 C188 364 204 358 222 344" />
+        </g>
+
+        <!-- Flowers planted exactly on the oval rim -->
+        <g fill="#d4a0a0">
+          <!-- heart tips -->
+          <path d="M154 8 C148 8 147 16 150 22 L154 26 L158 22 C161 16 160 8 154 8 Z" />
+          <path d="M186 8 C180 8 179 16 182 22 L186 26 L190 22 C193 16 192 8 186 8 Z" />
+          <path d="M128 32 C122 32 121 40 124 46 L128 50 L132 46 C135 40 134 32 128 32 Z" />
+          <path d="M212 32 C206 32 205 40 208 46 L212 50 L216 46 C219 40 218 32 212 32 Z" />
+          <!-- oval rim (attach tip sits on the line) -->
+          <path d="M128.3 63 C122.3 63 121.3 71 124.3 77 L128.3 81 L132.3 77 C135.3 71 134.3 63 128.3 63 Z" />
+          <path d="M211.7 63 C205.7 63 204.7 71 207.7 77 L211.7 81 L215.7 77 C218.7 71 217.7 63 211.7 63 Z" />
+          <path d="M55.4 152 C49.4 152 48.4 160 51.4 166 L55.4 170 L59.4 166 C62.4 160 61.4 152 55.4 152 Z" />
+          <path d="M284.6 152 C278.6 152 277.6 160 280.6 166 L284.6 170 L288.6 166 C291.6 160 290.6 152 284.6 152 Z" />
+          <path d="M55.4 254 C49.4 254 48.4 262 51.4 268 L55.4 272 L59.4 268 C62.4 262 61.4 254 55.4 254 Z" />
+          <path d="M284.6 254 C278.6 254 277.6 262 280.6 268 L284.6 272 L288.6 268 C291.6 262 290.6 254 284.6 254 Z" />
+          <path d="M109 332 C103 332 102 340 105 346 L109 350 L113 346 C116 340 115 332 109 332 Z" />
+          <path d="M231 332 C225 332 224 340 227 346 L231 350 L235 346 C238 340 237 332 231 332 Z" />
+          <path d="M170 352 C164 352 163 360 166 366 L170 370 L174 366 C177 360 176 352 170 352 Z" />
+        </g>
+
+        <!-- Bottom filigree under the frame -->
+        <g fill="none" stroke="#657255" stroke-width="1.25" stroke-linecap="round">
+          <path d="M108 398 C130 386 148 390 170 402 C192 390 210 386 232 398" />
+          <path d="M96 410 H244" stroke-width="1" />
+        </g>
+        <circle cx="96" cy="410" r="2" fill="#657255" />
+        <circle cx="244" cy="410" r="2" fill="#657255" />
+      </svg>
+
+      <div class="garden-copy">
+        <h1 class="headline" data-edit-key="welcome-headline" data-multiline="true">I Know It's Early..
+But I Couldn't Wait</h1>
+        <p class="subtitle" id="welcome-subtitle" data-edit-key="welcome-subtitle" data-multiline="true">Because some wishes are too special
+to wait for October</p>
+      </div>
+    </div>
+
     <button type="button" class="surprise-btn" id="surprise-btn">
-      Open your surprise🎁
+      Open your surprise
     </button>
   </main>
 
   <!-- ========== SCREEN 2: Birthday reveal ========== -->
   <section class="screen reveal" id="reveal-screen" aria-hidden="true">
-    <p class="brand reveal-brand">Birthday Bliss</p>
+    <span class="page-sticker cosmos-tr" aria-hidden="true"></span>
+    <span class="page-sticker fly-tl" aria-hidden="true">🦋</span>
+    <span class="page-sticker daisy-bl" aria-hidden="true"></span>
+    <p class="brand reveal-brand paper-banner" data-edit-key="brand">Birthday Bliss</p>
 
-    <!-- Large birthday heading with a soft fade-in -->
-    <h1 class="birthday-heading" id="birthday-heading">
-      HAPPY BIRTHDAY CHICKEN MUTTON
-    </h1>
+    <!-- Ornate vintage note frame — inspired by scrapbook label -->
+    <div class="birthday-frame" id="birthday-frame">
+      <div class="frame-shell">
+        <svg class="frame-art" viewBox="0 0 240 340" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="frameFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fbf7ee" />
+              <stop offset="100%" stop-color="#f2e8d4" />
+            </linearGradient>
+          </defs>
+
+          <!-- Cream label shape -->
+          <path
+            class="frame-fill"
+            d="M120 36
+               C136 36 148 48 152 62
+               C168 56 186 66 190 84
+               C208 88 220 108 216 128
+               C230 140 232 164 220 178
+               C232 192 230 216 216 228
+               C220 248 208 268 190 272
+               C186 290 168 300 152 294
+               C148 308 136 320 120 320
+               C104 320 92 308 88 294
+               C72 300 54 290 50 272
+               C32 268 20 248 24 228
+               C10 216 8 192 20 178
+               C8 164 10 140 24 128
+               C20 108 32 88 50 84
+               C54 66 72 56 88 62
+               C92 48 104 36 120 36 Z"
+          />
+          <path
+            class="frame-border-solid"
+            fill="none"
+            d="M120 36
+               C136 36 148 48 152 62
+               C168 56 186 66 190 84
+               C208 88 220 108 216 128
+               C230 140 232 164 220 178
+               C232 192 230 216 216 228
+               C220 248 208 268 190 272
+               C186 290 168 300 152 294
+               C148 308 136 320 120 320
+               C104 320 92 308 88 294
+               C72 300 54 290 50 272
+               C32 268 20 248 24 228
+               C10 216 8 192 20 178
+               C8 164 10 140 24 128
+               C20 108 32 88 50 84
+               C54 66 72 56 88 62
+               C92 48 104 36 120 36 Z"
+          />
+          <path
+            class="frame-border-dots"
+            fill="none"
+            d="M120 48
+               C134 48 144 58 148 70
+               C162 65 178 74 182 90
+               C198 94 208 112 205 130
+               C218 141 220 162 209 175
+               C220 188 218 209 205 220
+               C208 238 198 256 182 260
+               C178 274 162 283 148 278
+               C144 290 134 300 120 300
+               C106 300 96 290 92 278
+               C78 283 62 274 58 260
+               C42 256 32 238 35 220
+               C22 209 20 188 31 175
+               C20 162 22 141 35 130
+               C32 112 42 94 58 90
+               C62 74 78 65 92 70
+               C96 58 106 48 120 48 Z"
+          />
+
+          <!-- Top rose + leafy sprigs (clear like reference) -->
+          <g class="frame-top-art">
+            <!-- Left sprig -->
+            <path fill="#7d8b6a" d="M98 76 C104 70 112 72 114 78 C110 82 102 82 98 76 Z" />
+            <path fill="#8a9774" d="M102 82 C108 78 116 82 116 88 C110 90 104 88 102 82 Z" />
+            <path fill="#7d8b6a" d="M92 84 C98 82 102 86 100 92 C94 92 90 88 92 84 Z" />
+            <circle cx="90" cy="74" r="1.5" fill="#d4a0a0" />
+            <circle cx="88" cy="80" r="1.35" fill="#d4a0a0" />
+            <circle cx="94" cy="88" r="1.25" fill="#d4a0a0" />
+
+            <!-- Center dusty rose -->
+            <circle cx="120" cy="82" r="3.2" fill="#e8c4c0" />
+            <circle cx="120" cy="77.8" r="3.5" fill="#d4a0a0" />
+            <circle cx="124.6" cy="80.6" r="3.5" fill="#d4a0a0" />
+            <circle cx="123" cy="85.8" r="3.5" fill="#d4a0a0" />
+            <circle cx="117" cy="85.8" r="3.5" fill="#d4a0a0" />
+            <circle cx="115.4" cy="80.6" r="3.5" fill="#d4a0a0" />
+            <circle cx="120" cy="82" r="2.2" fill="#f3d6d0" />
+            <circle cx="120" cy="82" r="1.1" fill="#c98e8e" />
+            <!-- Tiny flourish under rose -->
+            <path fill="none" stroke="#8f9d78" stroke-width="1.1" stroke-linecap="round"
+                  d="M112 92 Q120 96 128 92" />
+
+            <!-- Right sprig -->
+            <path fill="#7d8b6a" d="M142 76 C136 70 128 72 126 78 C130 82 138 82 142 76 Z" />
+            <path fill="#8a9774" d="M138 82 C132 78 124 82 124 88 C130 90 136 88 138 82 Z" />
+            <path fill="#7d8b6a" d="M148 84 C142 82 138 86 140 92 C146 92 150 88 148 84 Z" />
+            <circle cx="150" cy="74" r="1.5" fill="#d4a0a0" />
+            <circle cx="152" cy="80" r="1.35" fill="#d4a0a0" />
+            <circle cx="146" cy="88" r="1.25" fill="#d4a0a0" />
+          </g>
+
+          <!-- Bottom heart + leafy sprigs -->
+          <g class="frame-bottom-art">
+            <path fill="#d4a0a0"
+                  d="M120 268
+                     C120 268 108 258 108 250
+                     C108 245 112 242 116 242
+                     C118.5 242 120 244 120 244
+                     C120 244 121.5 242 124 242
+                     C128 242 132 245 132 250
+                     C132 258 120 268 120 268 Z" />
+            <path fill="#7d8b6a" d="M104 262 C96 252 90 248 86 252 C90 258 96 264 104 266 Z" />
+            <path fill="#8a9774" d="M108 268 C98 262 92 258 90 262 C94 268 100 272 108 272 Z" />
+            <path fill="#7d8b6a" d="M100 272 C94 268 88 268 88 274 C94 278 100 278 104 274 Z" />
+            <path fill="#7d8b6a" d="M136 262 C144 252 150 248 154 252 C150 258 144 264 136 266 Z" />
+            <path fill="#8a9774" d="M132 268 C142 262 148 258 150 262 C146 268 140 272 132 272 Z" />
+            <path fill="#7d8b6a" d="M140 272 C146 268 152 268 152 274 C146 278 140 278 136 274 Z" />
+            <circle cx="96" cy="256" r="1.4" fill="#d4a0a0" />
+            <circle cx="92" cy="266" r="1.3" fill="#d4a0a0" />
+            <circle cx="144" cy="256" r="1.4" fill="#d4a0a0" />
+            <circle cx="148" cy="266" r="1.3" fill="#d4a0a0" />
+            <path fill="none" stroke="#8f9d78" stroke-width="1.4" stroke-linecap="round"
+                  d="M110 286 Q120 294 130 286" />
+          </g>
+        </svg>
+
+        <h1 class="birthday-heading" id="birthday-heading" data-edit-key="birthday-heading">
+          Happy Birthday
+          Chicken Mutton
+        </h1>
+      </div>
+    </div>
 
     <!-- Short line under the birthday heading -->
-    <p class="reveal-subtitle">
-      Your special day is almost here.. but i couldn't wait to celebrate you
-    </p>
+    <p class="reveal-subtitle" data-edit-key="reveal-subtitle" data-multiline="true">Your special day is almost here..
+but i couldn't wait to celebrate&nbsp;you</p>
 
     <!-- Opens page 3 with the message card -->
     <button type="button" class="surprise-btn continue-btn" id="continue-btn">
@@ -64,12 +276,15 @@
 
   <!-- ========== SCREEN 3: Message card ========== -->
   <section class="screen message" id="message-screen" aria-hidden="true">
+    <span class="page-sticker cosmos-tr" aria-hidden="true"></span>
+    <span class="page-sticker fly-tl" aria-hidden="true">🦋</span>
+    <span class="page-sticker daisy-bl" aria-hidden="true"></span>
     <!-- Cute elegant card — edit the paragraph below anytime -->
     <article class="message-card" id="message-card">
-      <h2 class="card-heading">Something i want you to know</h2>
+      <h2 class="card-heading" data-edit-key="card-heading">Something i want you to know</h2>
 
       <!-- Placeholder birthday message — replace this text with your own later -->
-      <p class="card-message">
+      <p class="card-message" data-edit-key="card-message" data-multiline="true">
         You make ordinary days feel a little brighter. Thank you for being you —
         kind, funny, and so easy to celebrate. I hope this year brings you soft
         moments, big smiles, and everything your heart has been waiting for.
@@ -83,119 +298,79 @@
     </button>
   </section>
 
-  <!-- ========== SCREEN 4: Memory slideshow ========== -->
+  <!-- ========== SCREEN 4: Vintage scrapbook memories ========== -->
   <section class="screen memories" id="memories-screen" aria-hidden="true">
-    <!-- Everything stacks: title → frame → Next Memory -->
+    <!-- Create link sits in the corner -->
+    <div class="share-box" id="share-box">
+      <button type="button" class="share-btn" id="create-link-btn">
+        Create link
+      </button>
+      <p class="share-status" id="share-status"></p>
+    </div>
+
     <div class="memory-stage" id="memory-stage">
-      <!-- Frame + title + next button (title/button hug the purple edges) -->
-      <div class="polaroid-wrap" id="polaroid-wrap">
-        <!-- Very close to the top edge of the purple frame -->
-        <h2 class="memories-heading" id="memories-heading">Our Little Memories</h2>
+      <div class="scrapbook" id="polaroid-wrap">
+        <!-- Pink linen + lace corner, like a scrapbook cover -->
+        <div class="linen-patch" aria-hidden="true"></div>
+        <div class="lace-edge" aria-hidden="true"></div>
 
-        <div class="polaroid-window" id="memory-photo-wrap">
-          <img
-            class="memory-photo"
-            id="memory-photo"
-            src=""
-            alt="A little memory"
-          />
+        <p class="scrap-banner" data-edit-key="scrap-banner">Our Little Memories</p>
 
-          <button type="button" class="in-frame-upload" id="upload-photo-btn">
-            Add a picture
-          </button>
-        </div>
+        <p class="kraft-note note-top" data-edit-key="kraft-note-top">another year of you is something worth celebrating</p>
+        <p class="kraft-note note-bottom" data-edit-key="kraft-note-bottom">today is all about you</p>
 
-        <img
-          class="polaroid-overlay"
-          src="images/polaroid-frame.png"
-          alt=""
-          aria-hidden="true"
-        />
+        <span class="tape tape-1" aria-hidden="true"></span>
+        <span class="tape tape-2" aria-hidden="true"></span>
+        <span class="tape tape-3" aria-hidden="true"></span>
 
-        <!-- Extra white & purple bows around the frame -->
-        <div class="frame-bows" aria-hidden="true">
-          <svg class="bow bow-purple bow-1" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#7a5aad"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#9b7ec4"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#b59ad9"/>
-            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
-          </svg>
-          <svg class="bow bow-white bow-2" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#e8dff5"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f4eefb"/>
-            <circle cx="32" cy="20" r="5" fill="#d4c4f0"/>
-          </svg>
-          <svg class="bow bow-purple bow-3" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#8b6fc0"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#c4a8e8"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#a888d4"/>
-            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
-          </svg>
-          <svg class="bow bow-white bow-4" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#ddd0f0"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#faf7ff"/>
-            <circle cx="32" cy="20" r="5" fill="#c9b6e8"/>
-          </svg>
-          <svg class="bow bow-purple bow-5" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#7a5aad"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#d4c4f0"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#b8a0e0"/>
-            <circle cx="32" cy="20" r="5" fill="#5c3d8f"/>
-          </svg>
-          <svg class="bow bow-white bow-6" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#e6d9f8"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f0eaf8"/>
-            <circle cx="32" cy="20" r="5" fill="#c9b6e8"/>
-          </svg>
-          <svg class="bow bow-purple bow-7" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#8b6fc0"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#c9b6e8"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#a582c0"/>
-            <circle cx="32" cy="20" r="5" fill="#6b4f96"/>
-          </svg>
-          <svg class="bow bow-white bow-8" viewBox="0 0 64 48" fill="none">
-            <path d="M32 22c0 0-2.5 8-2.5 12s2.5 6 2.5 6 2.5-2 2.5-6-2.5-12-2.5-12z" fill="#ebe4f5"/>
-            <path d="M32 20c-8-10-22-8-24 2-1.5 7 6 12 14 10 4-1 7-5 10-12z" fill="#ffffff"/>
-            <path d="M32 20c8-10 22-8 24 2 1.5 7-6 12-14 10-4-1-7-5-10-12z" fill="#f7f2fc"/>
-            <circle cx="32" cy="20" r="5" fill="#d4c4f0"/>
-          </svg>
-        </div>
+        <span class="ribbon-bow" aria-hidden="true"></span>
+        <span class="heart-clip" aria-hidden="true"></span>
 
-        <!-- Very close to the bottom edge of the purple frame -->
-        <button type="button" class="surprise-btn" id="next-memory-btn">
-          Next Memory →
+        <span class="deco-butterfly fly-1" aria-hidden="true">🦋</span>
+        <span class="deco-butterfly fly-2" aria-hidden="true">🦋</span>
+
+        <span class="bloom cosmos" aria-hidden="true"></span>
+        <span class="bloom daisy" aria-hidden="true"></span>
+        <span class="bloom hydrangea" aria-hidden="true"></span>
+        <span class="bloom breath" aria-hidden="true"></span>
+
+        <span class="deco-sparkle spark-1" aria-hidden="true"></span>
+        <span class="deco-sparkle spark-2" aria-hidden="true"></span>
+        <span class="deco-sparkle spark-3" aria-hidden="true"></span>
+        <span class="deco-sparkle spark-4" aria-hidden="true"></span>
+
+        <!-- 4 overlapping cream papers — collage, not a grid -->
+        <button type="button" class="scrap-slot slot-1" data-index="0">
+          <img class="slot-photo" alt="Memory 1" />
+          <span class="slot-add">Add a picture</span>
+        </button>
+        <button type="button" class="scrap-slot slot-2" data-index="1">
+          <img class="slot-photo" alt="Memory 2" />
+          <span class="slot-add">Add a picture</span>
+        </button>
+        <button type="button" class="scrap-slot slot-3" data-index="2">
+          <img class="slot-photo" alt="Memory 3" />
+          <span class="slot-add">Add a picture</span>
+        </button>
+        <button type="button" class="scrap-slot slot-4" data-index="3">
+          <img class="slot-photo" alt="Memory 4" />
+          <span class="slot-add">Add a picture</span>
         </button>
       </div>
 
-      <!-- Hidden file picker — opened by the button inside the frame -->
-      <input
-        type="file"
-        id="photo-upload"
-        accept="image/*"
-        hidden
-      />
+      <input type="file" id="photo-upload" accept="image/*" hidden />
 
-      <!-- Create a shareable link with your framed photos -->
-      <div class="share-box" id="share-box">
-        <button type="button" class="share-btn" id="create-link-btn">
-          Create link
-        </button>
-        <p class="share-hint">
-          Add all 4 pictures, then create a link to send
-        </p>
-        <p class="share-status" id="share-status"></p>
-      </div>
+      <button type="button" class="surprise-btn" id="next-memory-btn">
+        Continue
+      </button>
 
-      <!-- Shown after Photo 4 — edit this message anytime -->
       <div class="memory-finale" id="memory-finale" hidden>
-        <p class="finale-text">
-          Every little moment with you feels like a keepsake.
-          Thank you for filling my days with memories worth framing.
-        </p>
-        <!-- Opens page 5 — Make a wish -->
+        <div class="finale-card">
+          <p class="finale-text" data-edit-key="finale-text" data-multiline="true">
+            Every little moment with you feels like a keepsake.
+            Thank you for filling my days with memories worth framing.
+          </p>
+        </div>
         <button type="button" class="surprise-btn wish-continue-btn" id="wish-page-btn">
           Continue
         </button>
@@ -205,11 +380,14 @@
 
   <!-- ========== SCREEN 5: Make a wish ========== -->
   <section class="screen wish" id="wish-screen" aria-hidden="true">
+    <span class="page-sticker cosmos-tr" aria-hidden="true"></span>
+    <span class="page-sticker fly-tl" aria-hidden="true">🦋</span>
+    <span class="page-sticker daisy-bl" aria-hidden="true"></span>
     <!-- Sparkle confetti layer (filled by script.js) -->
     <div id="wish-confetti" aria-hidden="true"></div>
 
-    <h2 class="wish-heading">Make a wish</h2>
-    <p class="wish-subtitle">
+    <h2 class="wish-heading paper-banner" data-edit-key="wish-heading">Make a wish</h2>
+    <p class="wish-subtitle" data-edit-key="wish-subtitle">
       Close your eyes make a wish and let the magic begin✨
     </p>
 
@@ -247,7 +425,7 @@
     </button>
 
     <!-- Shown after the candles blow out -->
-    <p class="wish-sent" id="wish-sent" hidden>
+    <p class="wish-sent" id="wish-sent" data-edit-key="wish-sent" hidden>
       Your wish has been sent to the star
     </p>
   </section>
