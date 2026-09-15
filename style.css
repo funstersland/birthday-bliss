@@ -676,22 +676,24 @@ body {
   justify-content: flex-start;
   overflow-y: auto;
   max-height: 100vh;
-  padding: 3.4rem 0.6rem 1.4rem;
-  gap: 0.7rem;
+  padding: 5.4rem 0.4rem 1.5rem;
+  gap: 0.9rem;
 }
 
 .memory-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  justify-content: flex-start;
+  gap: 0.9rem;
   width: 100%;
 }
 
 .scrapbook {
   position: relative;
-  width: min(96vw, 380px);
-  height: min(138vw, 640px);
+  width: min(98vw, 500px);
+  height: min(150vw, 800px);
+  margin: 0.6rem auto 0;
   flex-shrink: 0;
   overflow: hidden;
   background: linear-gradient(165deg, #8b9674 0%, #7a8868 48%, #6d7a5c 100%);
@@ -724,15 +726,16 @@ body {
 .scrap-banner {
   position: absolute;
   z-index: 8;
-  top: 5%;
-  left: 18%;
-  right: 10%;
+  top: 4%;
+  left: 50%;
+  width: min(78%, 280px);
+  transform: translateX(-50%) rotate(-1.5deg);
   font-family: "Great Vibes", cursive;
-  font-size: clamp(1.55rem, 6.2vw, 2.15rem);
+  font-size: clamp(1.7rem, 6.5vw, 2.35rem);
   color: var(--sage-deep);
   background: #f6efe3;
-  padding: 0.35rem 0.7rem 0.5rem;
-  transform: rotate(-1.5deg);
+  padding: 0.4rem 0.85rem 0.55rem;
+  text-align: center;
   box-shadow: 2px 3px 8px rgba(74, 67, 56, 0.12);
 }
 
@@ -749,19 +752,19 @@ body {
 }
 
 .note-top {
-  top: 22%;
-  left: 6%;
-  width: 34%;
-  font-size: 0.78rem;
+  top: 18%;
+  left: 5%;
+  width: 32%;
+  font-size: 0.8rem;
   transform: rotate(-6deg);
 }
 
 .note-bottom {
-  bottom: 7%;
-  left: 8%;
-  width: 30%;
-  font-size: 0.82rem;
-  transform: rotate(-3deg);
+  bottom: 5%;
+  left: 50%;
+  width: 34%;
+  font-size: 0.86rem;
+  transform: translateX(-50%) rotate(-2deg);
 }
 
 .tape {
@@ -929,45 +932,46 @@ body {
   position: absolute;
   z-index: 2;
   border: none;
-  padding: 8px 8px 16px;
+  padding: 10px 10px 20px;
   overflow: hidden;
   cursor: pointer;
   background: #f4ead8;
   box-shadow: 3px 6px 14px rgba(74, 67, 56, 0.22);
 }
 
+/* Bigger, centered collage cluster — sitting a bit lower */
 .slot-1 {
-  top: 33%;
+  top: 30%;
   left: 5%;
-  width: 42%;
-  height: 27%;
-  transform: rotate(-4deg);
+  width: 50%;
+  height: 36%;
+  transform: rotate(-3.5deg);
 }
 
 .slot-2 {
-  top: 18%;
-  left: 49%;
-  width: 45%;
-  height: 34%;
-  transform: rotate(2deg);
+  top: 24%;
+  left: 46%;
+  width: 50%;
+  height: 40%;
+  transform: rotate(2.5deg);
 }
 
 .slot-3 {
-  top: 54%;
-  left: 47%;
-  width: 46%;
-  height: 32%;
+  top: 56%;
+  left: 45%;
+  width: 51%;
+  height: 37%;
   transform: rotate(-1.5deg);
 }
 
 .slot-4 {
-  top: 63%;
-  left: 6%;
-  width: 38%;
-  height: 16%;
+  top: 60%;
+  left: 4%;
+  width: 48%;
+  height: 32%;
   transform: rotate(3deg);
   background: #dce3c8;
-  padding: 7px;
+  padding: 10px;
 }
 
 .slot-photo {
@@ -1417,7 +1421,8 @@ body.shared-view .scrap-slot {
   }
 
   .scrapbook {
-    width: min(96vw, 420px);
+    width: min(98vw, 520px);
+    height: min(152vw, 820px);
   }
 
   .cake-scene {
