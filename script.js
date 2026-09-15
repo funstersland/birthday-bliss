@@ -622,6 +622,8 @@ const photoUploadInput = document.getElementById("photo-upload");
 const createLinkBtn = document.getElementById("create-link-btn");
 const shareStatus = document.getElementById("share-status");
 const shareBox = document.getElementById("share-box");
+const welcomeCreateLinkBtn = document.getElementById("welcome-create-link-btn");
+const welcomeShareStatus = document.getElementById("welcome-share-status");
 
 /**
  * Puts a photo into one collage frame
@@ -701,11 +703,6 @@ nextMemoryBtn.addEventListener("click", function () {
   showFinale(true);
 });
 
-/* =========================================
-   Create / open a share link with framed photos
-   Photos are packed into the link (no server needed)
-   ========================================= */
-
 /**
  * Makes a photo smaller so the share link is not too long
  */
@@ -728,7 +725,6 @@ function compressImage(src, maxSize, quality) {
       const ctx = canvas.getContext("2d");
       ctx.drawImage(img, 0, 0, width, height);
 
-      // JPEG keeps the link much shorter than PNG
       resolve(canvas.toDataURL("image/jpeg", quality));
     };
     img.onerror = function () {
@@ -739,60 +735,112 @@ function compressImage(src, maxSize, quality) {
 }
 
 /**
- * Builds a link that contains the 4 framed photos
- * and copies it so you can send it
+ * Builds a shareable link.
+ * Shared opens always start on page 1.
+ * If all 4 photos are ready, they are packed into the link for page 4.
  */
-createLinkBtn.addEventListener("click", async function () {
-  // Need all 4 pictures first
-  for (let i = 0; i < memories.length; i++) {
-    if (!memories[i].uploadedSrc) {
-      shareStatus.textContent = "Add all 4 pictures first.";
-      return;
+async function createShareLink(options) {
+  const requirePhotos = options && options.requirePhotos;
+  const btn = options && options.button;
+  const statusEl = options && options.status;
+
+  function setStatus(message) {
+    if (statusEl) {
+      statusEl.textContent = message;
+    }
+    if (shareStatus && statusEl !== shareStatus) {
+      // keep page 4 status in sync when creating from page 1
     }
   }
 
-  createLinkBtn.disabled = true;
-  createLinkBtn.textContent = "Creating link...";
-  shareStatus.textContent = "Packing your photos into a link...";
+  if (requirePhotos) {
+    for (let i = 0; i < memories.length; i++) {
+      if (!memories[i].uploadedSrc) {
+        setStatus("Add all 4 pictures first.");
+        return;
+      }
+    }
+  }
+
+  const allPhotosReady = memories.every(function (memory) {
+    return !!memory.uploadedSrc;
+  });
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Creating link...";
+  }
+
+  if (allPhotosReady) {
+    setStatus("Packing your photos into a link...");
+  } else {
+    setStatus("Creating your link...");
+  }
 
   try {
-    const photos = [];
-
-    for (let i = 0; i < memories.length; i++) {
-      // Smaller size = shorter link that still looks good in the frame
-      const dataUrl = await compressImage(memories[i].uploadedSrc, 340, 0.52);
-      photos.push(dataUrl);
-    }
-
-    const payload = encodeURIComponent(JSON.stringify({ v: 1, photos: photos }));
     const baseUrl = window.location.href.split("#")[0];
-    const link = baseUrl + "#share=" + payload;
+    let link = baseUrl;
 
-    if (link.length > 1800000) {
-      shareStatus.textContent = "Photos are too big. Try smaller pictures.";
-      return;
+    if (allPhotosReady) {
+      const photos = [];
+      for (let i = 0; i < memories.length; i++) {
+        const dataUrl = await compressImage(memories[i].uploadedSrc, 340, 0.52);
+        photos.push(dataUrl);
+      }
+      const payload = encodeURIComponent(JSON.stringify({ v: 1, photos: photos }));
+      link = baseUrl + "#share=" + payload;
+
+      if (link.length > 1800000) {
+        setStatus("Photos are too big. Try smaller pictures.");
+        return;
+      }
     }
 
-    // Copy the link for easy sharing
     if (navigator.clipboard && navigator.clipboard.writeText) {
       await navigator.clipboard.writeText(link);
-      shareStatus.textContent = "Link copied! Send it to them.";
+      setStatus(
+        allPhotosReady
+          ? "Link copied! Opens from page 1."
+          : "Link copied! Send it to them."
+      );
     } else {
       window.prompt("Copy this link:", link);
-      shareStatus.textContent = "Link ready — paste and send it.";
+      setStatus("Link ready — paste and send it.");
     }
   } catch (error) {
     console.error(error);
-    shareStatus.textContent = "Could not create the link. Try again.";
+    setStatus("Could not create the link. Try again.");
   } finally {
-    createLinkBtn.disabled = false;
-    createLinkBtn.textContent = "Create link";
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Create link";
+    }
   }
-});
+}
+
+if (createLinkBtn) {
+  createLinkBtn.addEventListener("click", function () {
+    createShareLink({
+      requirePhotos: true,
+      button: createLinkBtn,
+      status: shareStatus
+    });
+  });
+}
+
+if (welcomeCreateLinkBtn) {
+  welcomeCreateLinkBtn.addEventListener("click", function () {
+    createShareLink({
+      requirePhotos: false,
+      button: welcomeCreateLinkBtn,
+      status: welcomeShareStatus
+    });
+  });
+}
 
 /**
  * If this page was opened from a share link,
- * load the photos and jump to the framed memories
+ * load the photos but always start on page 1.
  */
 function openSharedLinkIfPresent() {
   const hash = window.location.hash;
@@ -816,16 +864,17 @@ function openSharedLinkIfPresent() {
     isSharedView = true;
     document.body.classList.add("shared-view");
 
-    // Hide earlier screens and show the framed memories
-    welcomeScreen.classList.remove("is-active");
-    welcomeScreen.setAttribute("aria-hidden", "true");
+    // Always begin on page 1 — later pages keep the packed photos
+    welcomeScreen.classList.add("is-active");
+    welcomeScreen.setAttribute("aria-hidden", "false");
     revealScreen.classList.remove("is-active");
     revealScreen.setAttribute("aria-hidden", "true");
     messageScreen.classList.remove("is-active");
     messageScreen.setAttribute("aria-hidden", "true");
-
-    memoriesScreen.classList.add("is-active");
-    memoriesScreen.setAttribute("aria-hidden", "false");
+    memoriesScreen.classList.remove("is-active");
+    memoriesScreen.setAttribute("aria-hidden", "true");
+    wishScreen.classList.remove("is-active");
+    wishScreen.setAttribute("aria-hidden", "true");
 
     currentMemory = 0;
     showFinale(false);
